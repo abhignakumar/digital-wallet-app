@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "../providers";
-import NavBarClient from "../components/NavBarClient";
+import { NavBarClient } from "../components/NavBarClient";
 
 export const metadata: Metadata = {
   title: "Payment App (User)",

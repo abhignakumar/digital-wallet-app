@@ -4,7 +4,7 @@ import { NavBar } from "@repo/ui/navbar";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function NavBarClient() {
+export const NavBarClient = () => {
   const session = useSession();
   const router = useRouter();
 
@@ -20,4 +20,4 @@ export default function NavBarClient() {
       />
     </div>
   );
-}
+};
