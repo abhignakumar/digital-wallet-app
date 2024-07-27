@@ -5,7 +5,7 @@ export const Select = ({
   options,
 }: {
   onSelect: (value: string) => void;
-  options: { key: string; value: string }[] | undefined;
+  options: { key: number; value: string }[] | undefined;
 }) => {
   return (
     <select

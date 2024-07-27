@@ -6,10 +6,14 @@ import { Card } from "@repo/ui/card";
 import { TextInput } from "@repo/ui/textInput";
 import { Select } from "@repo/ui/select";
 import { Button } from "@repo/ui/button";
+import { createOnRampTransaction } from "../lib/actions/createOnRampTransaction";
 
 export const AddMoneyCard = () => {
-  const [banks, setBanks] = useState<[{ name: string; paymentUrl: string }]>();
+  const [banks, setBanks] =
+    useState<[{ id: number; name: string; paymentUrl: string }]>();
   const [redirectUrl, setRedirectUrl] = useState("");
+  const [bankProviderId, setBankProviderId] = useState(0);
+  const [amount, setAmount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,6 +21,7 @@ export const AddMoneyCard = () => {
       if (response.data.message !== "Error") {
         setBanks(response.data.banks);
         setRedirectUrl(response.data.banks[0].paymentUrl);
+        setBankProviderId(response.data.banks[0].id);
       }
     };
     fetchData();
@@ -28,21 +33,25 @@ export const AddMoneyCard = () => {
         <TextInput
           label="Amount"
           placeholder="Enter Amount"
-          onChange={() => {}}
+          onChange={(value) => {
+            setAmount(Number(value));
+          }}
         />
         <div className="py-2 text-left">Bank</div>
         <Select
           onSelect={(value) => {
             setRedirectUrl(
-              banks?.find((bank) => bank.name === value)?.paymentUrl || ""
+              banks?.find((bank) => bank.id === Number(value))?.paymentUrl || ""
             );
+            setBankProviderId(Number(value));
           }}
-          options={banks?.map((bank) => ({ key: bank.name, value: bank.name }))}
+          options={banks?.map((bank) => ({ key: bank.id, value: bank.name }))}
         />
         <div className="flex justify-center pt-4">
           <Button
-            onClick={() => {
-              window.location.href = redirectUrl;
+            onClick={async () => {
+              await createOnRampTransaction(bankProviderId, amount);
+              //   window.location.href = redirectUrl;
             }}
           >
             Add Money

@@ -1,14 +1,13 @@
 import { Card } from "@repo/ui/card";
-import { $Enums } from "@repo/db";
-import { OnRampTxnItem } from "./OnRampTxnItem";
+import { P2PTxnItem } from "./P2PTxnItem";
 
-export const OnRampTransactionCard = ({
+export const P2PTransactionCard = ({
   transactions,
 }: {
   transactions?: {
     amount: number;
-    status: $Enums.OnRampStatus;
     time: Date;
+    transfer: "Sent" | "Received";
   }[];
 }) => {
   if (!transactions?.length)
@@ -21,9 +20,7 @@ export const OnRampTransactionCard = ({
     return (
       <Card title="Recent Transactions">
         <div className="pt-2">
-          {transactions?.map((t, index) => (
-            <OnRampTxnItem key={index} txn={t} />
-          ))}
+          {transactions?.map((t, index) => <P2PTxnItem key={index} txn={t} />)}
         </div>
       </Card>
     );

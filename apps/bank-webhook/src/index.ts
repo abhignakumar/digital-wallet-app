@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 const paymentDetailsSchema = z.object({
-  token: z.string().length(36),
+  token: z.string(),
   userId: z.number().positive(),
   amount: z.number().positive(),
 });
@@ -85,3 +85,10 @@ app.post("/paymentAppWebHook", async (req, res) => {
 app.listen(3005, () => {
   console.log("Listening on port 3005 ...");
 });
+
+// {
+//   bankSecret: string,
+//   token: string,
+//   userIdentifier: number,
+//   amount: number
+// }

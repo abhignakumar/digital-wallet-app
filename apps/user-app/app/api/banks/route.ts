@@ -5,6 +5,7 @@ export async function GET() {
   try {
     const banks = await prisma.bankProvider.findMany({
       select: {
+        id: true,
         name: true,
         paymentUrl: true,
       },
