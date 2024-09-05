@@ -42,10 +42,23 @@ export const NavBar = ({ user, onSignIn, onSignOut }: NavBarProps) => {
           Payment App
         </div>
       </div>
-      <div>
-        <Button onClick={user ? onSignOut : onSignIn}>
-          {user ? "Log out" : "Login"}
-        </Button>
+      <div className="flex">
+        {!user && (
+          <div className="mr-3">
+            <Button
+              onClick={() => {
+                router.push("/signup");
+              }}
+            >
+              Sign Up
+            </Button>
+          </div>
+        )}
+        <div>
+          <Button onClick={user ? onSignOut : onSignIn}>
+            {user ? "Log out" : "Login"}
+          </Button>
+        </div>
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ export default async function () {
   const userId = Number(session.user.id);
   const balance = await getBalance(userId);
   const transactions = await getOnRampTransactions(userId);
+  if (transactions.length > 5) transactions.splice(5);
 
   return (
     <div className="w-full">
