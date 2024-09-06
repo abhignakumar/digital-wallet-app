@@ -17,7 +17,7 @@ export const AddMoneyCard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:3001/api/banks");
+      const response = await axios.get("/api/banks");
       if (response.data.message !== "Error") {
         setBanks(response.data.banks);
         setRedirectUrl(response.data.banks[0].paymentUrl);
@@ -51,7 +51,7 @@ export const AddMoneyCard = () => {
           <Button
             onClick={async () => {
               await createOnRampTransaction(bankProviderId, amount);
-              //   window.location.href = redirectUrl;
+              window.open(redirectUrl, "_blank");
             }}
           >
             Add Money

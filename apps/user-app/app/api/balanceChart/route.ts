@@ -3,8 +3,8 @@ import { getAllTransactions, getBalance } from "../../../lib/fetchData";
 import { $Enums } from "@repo/db";
 
 export async function GET(req: NextRequest) {
+  const userId = Number(req.nextUrl.searchParams.get("userId"));
   try {
-    const userId = Number(req.nextUrl.searchParams.get("userId"));
     const transactions = await getAllTransactions(userId);
     let balance = (await getBalance(userId)).amount;
     const xAxis: number[] = [];

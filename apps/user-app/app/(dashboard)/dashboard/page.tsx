@@ -21,7 +21,7 @@ export default function () {
     const fetchData = async () => {
       if (session.data?.user?.id) {
         const response1 = await axios.get(
-          `http://localhost:3001/api/balance?userId=${session.data?.user?.id}`
+          `/api/balance?userId=${session.data?.user?.id}`
         );
         const responseBalance = response1.data.balance;
         if (responseBalance)
@@ -30,7 +30,7 @@ export default function () {
             locked: responseBalance.locked,
           });
         const response2 = await axios.get(
-          `http://localhost:3001/api/balanceChart?userId=${session.data?.user?.id}`
+          `/api/balanceChart?userId=${session.data?.user?.id}`
         );
         const responseChartData = response2.data.chartData;
         if (responseChartData) {

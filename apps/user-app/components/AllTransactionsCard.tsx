@@ -32,7 +32,10 @@ export const AllTransactionCard = ({
                 transfer: t.transfer,
               };
               return (
-                <div className="flex hover:bg-gray-100 px-2 rounded-lg">
+                <div
+                  key={index}
+                  className="flex hover:bg-gray-100 px-2 rounded-lg"
+                >
                   <div className="flex items-center mr-3">
                     <div className="text-xs font-semibold bg-purple-200 rounded-lg px-2 py-1">
                       P2P
@@ -48,7 +51,10 @@ export const AllTransactionCard = ({
                 status: t.status,
               };
               return (
-                <div className="flex  hover:bg-gray-100 px-2 rounded-lg">
+                <div
+                  key={index}
+                  className="flex  hover:bg-gray-100 px-2 rounded-lg"
+                >
                   <div className="flex items-center mr-3">
                     <div className="text-xs font-semibold bg-blue-200 rounded-lg px-2 py-1">
                       Bank

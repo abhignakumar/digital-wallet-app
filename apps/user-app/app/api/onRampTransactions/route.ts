@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@repo/db";
 
 export async function GET(req: NextRequest) {
+  const userId = Number(req.nextUrl.searchParams.get("userId"));
   try {
-    const userId = Number(req.nextUrl.searchParams.get("userId"));
     const onRampTxns = await prisma.onRampTransaction.findMany({
       where: {
         userId: userId,
