@@ -92,6 +92,3 @@ app.listen(3005, () => {
 //   userIdentifier: number,
 //   amount: number
 // }
-
-// "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=dist/index.js",
-// "start": "nodemon src/index.ts",
