@@ -4,7 +4,7 @@ import { Providers } from "../providers";
 import { NavBarClient } from "../components/NavBarClient";
 
 export const metadata: Metadata = {
-  title: "Payment App (User)",
+  title: "Digital Wallet Pay",
   description: "",
 };
 

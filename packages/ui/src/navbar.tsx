@@ -39,7 +39,7 @@ export const NavBar = ({ user, onSignIn, onSignOut }: NavBarProps) => {
           </svg>
         </div>
         <div className="flex items-center text-base font-bold ml-2 text-slate-700">
-          Payment App
+          Digital Wallet Pay
         </div>
       </div>
       <div className="flex">
